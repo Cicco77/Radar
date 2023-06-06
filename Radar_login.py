@@ -15,7 +15,6 @@ global radartoken           #this token will be used for all API requests
 
 def loadradar():
     print('Attempting to login to Radar with ' + radarusername + ' user.')
-    noauthheaders = {'Accept': 'application/json, text/javascript, */*; q=0.01', 'Content-Type': 'application/json'}
     loadcredentialsurl = radarendpointurl + '/auth/v4/getToken'
     payload = {
                 'username': radarusername,
@@ -27,7 +26,7 @@ def loadradar():
             }
    
     try:
-        r = requests.post(loadcredentialsurl, headers=noauthheaders, json=payload)
+        r = requests.post(loadcredentialsurl, json=payload)
 
     except:
         print('Error logging into Radar API - exception')
