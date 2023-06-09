@@ -10,8 +10,6 @@ radarpassword = #'write_here_your_username_password'
 childaccountid = #'write_here_your_radar_portalid'
 
 # do not modify the below
-global radartoken           #this token will be used for all API requests
-
 
 def loadradar():
     print('Attempting to login to Radar with ' + radarusername + ' user.')
@@ -38,6 +36,7 @@ def loadradar():
     
     responsejson = json.loads(r.text)
     token = (responsejson['token'])
+    global radartoken           #this token will be used for all API requests
     radartoken = 'Bearer ' + token
     print('Your Radar token for further API scraping is:\n' +radartoken)
 
